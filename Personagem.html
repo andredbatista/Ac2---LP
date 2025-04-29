@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha Seu Personagem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    input[type="radio"] {
+      margin: 10px 0;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .resultado {
+      margin-top: 20px;
+    }
+    .resultado img {
+      max-width: 120px;
+      margin-top: 15px;
+      border-radius: 5px;
+    }
+    .navigation {
+      margin-top: 20px;
+    }
+    .navigation button {
+      background-color: #28a745;
+      color: white;
+    }
+    .navigation button:hover {
+      background-color: #218838;
+    }
+    .meus-projetos {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .meus-projetos a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .meus-projetos a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selecione Seu Personagem</h1>
+    <form id="formPersonagem">
+      <label>
+        <input type="radio" name="personagem" value="Mago"> Mago
+      </label><br>
+      <label>
+        <input type="radio" name="personagem" value="Guerreiro"> Guerreiro
+      </label><br>
+      <label>
+        <input type="radio" name="personagem" value="Arqueiro"> Arqueiro
+      </label><br>
+      <button type="button" onclick="mostrarEscolha()">Confirmar</button>
+    </form>
+    <div id="resultado" class="resultado"></div>
+    
+    
+    <div class="meus-projetos">
+      <a href="Fonte.html">Voltar para página anterior</a>
+    </div>
+  </div>
+
+  <script>
+    function mostrarEscolha() {
+      const opcaoSelecionada = document.querySelector('input[name="personagem"]:checked');
+      const areaResultado = document.getElementById('resultado');
+
+      if (!opcaoSelecionada) {
+        areaResultado.textContent = "Por favor, escolha um personagem antes de continuar.";
+        return;
+      }
+
+      let textoMensagem = "";
+      let imagemPersonagem = "";
+
+      switch (opcaoSelecionada.value) {
+        case "Mago":
+          textoMensagem = "Você escolheu ser um Mago! Prepare-se para lançar feitiços incríveis!";
+          imagemPersonagem = "https://th.bing.com/th/id/OIP.LRq_kXiTOWbrkODEyPsSCAHaHa?cb=iwc1&w=626&h=626&rs=1&pid=ImgDetMain"; 
+          break;
+        case "Guerreiro":
+          textoMensagem = "Você escolheu ser um Guerreiro! Prepare-se para enfrentar batalhas épicas!";
+          imagemPersonagem = "https://png.pngtree.com/png-clipart/20230914/original/pngtree-medieval-knight-vector-png-image_12155981.png"; 
+          break;
+        case "Arqueiro":
+          textoMensagem = "Você escolheu ser um Arqueiro! Prepare-se para acertar seus alvos com precisão!";
+          imagemPersonagem = "https://th.bing.com/th/id/OIP.PNO7d1f43PmLHX1wfEYixgHaHa?cb=iwc1&rs=1&pid=ImgDetMain"; 
+          break;
+      }
+
+      areaResultado.innerHTML = `<p>${textoMensagem}</p><img src="${imagemPersonagem}" alt="Imagem do ${opcaoSelecionada.value}">`;
+    }
+
+  </script>
+</body>
+</html>
